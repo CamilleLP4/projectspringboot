@@ -18,15 +18,24 @@ import org.json.JSONObject;
 
 import projectspringboot.model.Film;
 
+/**
+ * Classe qui appel l'api Starwars pour créer la liste pour mon api
+ * @author Camille
+ * 12/12/19
+ */
 public class StarWars {
 	
+	/**
+	 * Methode recuperant le resultat de l'Api Star Wars et le traite pour l'inserer dans une liste
+	 * @return retourne la liste des Films Star Wars
+	 */
 	public static List<Film> ApiStarWars(){
 		List<Film> starWars = new ArrayList<Film>();
-		SimpleDateFormat dateParse = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateParse = new SimpleDateFormat("yyyy-MM-dd"); 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		
 		String url = "https://swapi.co/api/films/?format=json";
 		String jsonText;
+		
 		try {
 			jsonText = IOUtils.toString(new URL(url), Charset.forName("UTF-8"));
 			JSONObject jsonComplet = new JSONObject(jsonText);
@@ -37,22 +46,23 @@ public class StarWars {
 				
 				Integer id = current.getInt("episode_id");
 				String name = current.getString("title");
-				String opening = current.getString("opening_crawl");
+				String opening = current.getString("opening_crawl").replaceAll("\r\n", "<br>");
 				String director = current.getString("director");
 				
-				Date date = dateParse.parse(current.getString("release_date"));
-				String releaseDate = dateFormat.format(date);
-				starWars.add(new Film(id, name, opening, director, releaseDate));
+				Date date = dateParse.parse(current.getString("release_date")); //Transforme en Date
+				String releaseDate = dateFormat.format(date);					//Transforme en String
+				
+				starWars.add(new Film(id, name, opening, director, releaseDate)); // ajoute un film à la liste
 			}
 			
-			Collections.sort(starWars, new Comparator<Film>() {
+			Collections.sort(starWars, new Comparator<Film>() { //tri la liste trouvé sur StackOverFlow
 		        @Override
 		        public int compare(Film o1, Film o2)
 		        {
-
 		            return  o1.getId().compareTo(o2.getId());
 		        }
 		    });
+			
 		} catch (MalformedURLException e) {
 			System.out.println("Problème url");
 			e.printStackTrace();
@@ -68,13 +78,5 @@ public class StarWars {
 		}
 		
 		return starWars;
-	}
-	
-	public static void main(String[] args) throws MalformedURLException, IOException, JSONException, ParseException {
-		List<Film> test = ApiStarWars();
-		for (Film film : test) {
-			System.out.println(film.toString());
-			System.out.println();
-		}
 	}
 }

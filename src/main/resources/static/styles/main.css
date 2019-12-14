@@ -14,7 +14,7 @@ body {
 
 .spy-scrool{
     position: fixed;
-    width: 8%;
+    width: 20%;
     font-size: large;
 }
 
@@ -23,7 +23,9 @@ body {
     color: #ff6;
 }
 .spy-body{
-    margin: 0 8%;
+    margin-left: 20%;
+    margin-right: 10%;
+    text-align: center;
 }
 
 .list-group-item{
@@ -35,6 +37,22 @@ body {
     background-color: transparent;
 }
 
+.color-starwars{
+    color: #ff6;
+}
+
 #project-title{
     text-align: center;
+}
+
+#index{
+    
+}
+
+#byid{
+    display: none;
+}
+
+#addfilm{
+    display: none;
 }

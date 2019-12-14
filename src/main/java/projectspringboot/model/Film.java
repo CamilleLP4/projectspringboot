@@ -1,5 +1,10 @@
 package projectspringboot.model;
 
+/**
+ * Définition de l'objet Film
+ * @author Camille
+ * 12/12/19
+ */
 public class Film {
 
 	private Integer id;
@@ -9,11 +14,11 @@ public class Film {
 	private String date;
 	
 	/**
-	 * @param id
-	 * @param name
-	 * @param opening
-	 * @param director
-	 * @param date
+	 * @param id Numero du film
+	 * @param name Titre
+	 * @param opening Texte d'ouverture
+	 * @param director Realisateur
+	 * @param date Date de sortie
 	 */
 	public Film(Integer id, String name, String opening, String director, String date) {
 		this.id = id;
@@ -58,6 +63,9 @@ public class Film {
 		return date;
 	}
 	
+	/**
+	 * @return chaine de caractere decrivant l'objet
+	 */
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", name=" + name + ", opening=" + opening + ", director=" + director + ", date="
