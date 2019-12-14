@@ -1,8 +1,8 @@
 package projectspringboot.model;
 
 public class Film {
-	
-	private int id;
+
+	private Integer id;
 	private String name;
 	private String opening;
 	private String director;
@@ -15,7 +15,7 @@ public class Film {
 	 * @param director
 	 * @param date
 	 */
-	public Film(int id, String name, String opening, String director, String date) {
+	public Film(Integer id, String name, String opening, String director, String date) {
 		this.id = id;
 		this.name = name;
 		this.opening = opening;
@@ -26,7 +26,7 @@ public class Film {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -58,4 +58,9 @@ public class Film {
 		return date;
 	}
 	
+	@Override
+	public String toString() {
+		return "Film [id=" + id + ", name=" + name + ", opening=" + opening + ", director=" + director + ", date="
+				+ date + "]";
+	}
 }
