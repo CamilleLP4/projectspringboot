@@ -37,7 +37,7 @@ public class Controller {
 	 */
 	@RequestMapping("/title")
 	public String title(){
-		return "Projet SpringBoot avec utilisation API REST et Javascript";
+		return "Projet SpringBoot";
 	}
 	
 	/**

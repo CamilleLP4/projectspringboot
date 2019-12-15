@@ -22,10 +22,11 @@
                     aria-controls="collapseid">Afficher par ID</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Ajouter Film</a>
+                <a class="btn nav-link" data-toggle="collapse" href="#collapsefilm" role="button" aria-expanded="false"
+                    aria-controls="collapseid">Ajouter Film</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Documentation</a>
+                <a class="nav-link" href="documentation.html">Documentation</a>
             </li>
         </ul>
     </nav>
@@ -37,33 +38,68 @@
                 <input type="text" readonly class="form-control-plaintext color-starwars" value="ID du Film">
             </div>
             <div class="form-group mx-sm-3 mb-2">
-                <input type="input" class="form-control" id="inputid">
+                <input type="text" class="form-control" value="" id="inputid">
             </div>
-            <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+            <button type="button" id="buttonid" class="btn color-starwars mb-2">Confirm</button>
         </form>
+    </div>
+    <div class="collapse" id="collapsefilm">
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <input type="text" readonly class="form-control-plaintext color-starwars" value="Titre du Film">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" name="Titre du Film" value="" id="inputtitre">
+            </div>
+        </form>
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <input type="text" readonly class="form-control-plaintext color-starwars" value="Réalisateur">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" name="Réalisateur" value="" id="inputdirector">
+            </div>
+        </form>
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <input type="text" readonly class="form-control-plaintext color-starwars" value="Date de sortie">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" name="Date de sortie" value="" id="inputdate">
+            </div>
+        </form>
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <label for="Texte d'ouverture">Texte d'ouverture</label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <textarea id="inputouverture" name="Texte d'ouverture"></textarea>
+            </div>
+        </form>
+        <button type="button" id="buttonfilm" class="btn color-starwars mb-2">Confirm</button>
     </div>
 <!-- #endregion -->
     <br>
     <h1 id="project-title"></h1>
 <!-- #region index-->
-    <div id="index">
+    <section id="index">
         <div class="spy-scrool">
             <div id="list-film" class="list-group">
-
+                <!--Rempli automatiquement avec Javascript-->
             </div>
         </div>
         <div class="spy-body" id="spy">
-            
+            <!--Rempli automatiquement avec Javascript-->
         </div>
-    </div>
+    </section>
 <!-- #endregion -->
-    <div id="byid">
+    <section id="byid">
+        <!--Rempli automatiquement avec Javascript-->
+    </section>
 
-    </div>
-
-    <div id="addfilm">
-
-    </div>
+    <section id="opening-crawl">
+        <!--Rempli automatiquement avec Javascript-->
+    </section>
 
     <footer class="foot">
         <small>&copy; Copyright Camille Décembre 2019 Projet Simplon SpringBoot</small>
