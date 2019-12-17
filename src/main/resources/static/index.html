@@ -10,80 +10,86 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
 </head>
-<body data-spy="scroll" data-target="#list-film" data-offset="0">
-<!-- #region NavBar-->
-    <nav>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/">Accueil</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn nav-link" data-toggle="collapse" href="#collapseid" role="button" aria-expanded="false"
-                    aria-controls="collapseid">Afficher par ID</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn nav-link" data-toggle="collapse" href="#collapsefilm" role="button" aria-expanded="false"
-                    aria-controls="collapseid">Ajouter Film</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="documentation.html">Documentation</a>
-            </li>
-        </ul>
-    </nav>
-<!-- #endregion -->
-<!-- #region Collapse zone-->
-    <div class="collapse" id="collapseid">
-        <form class="form-inline">
-            <div class="form-group mb-2">
-                <input type="text" readonly class="form-control-plaintext color-starwars" value="ID du Film">
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <input type="text" class="form-control" value="" id="inputid">
-            </div>
-            <button type="button" id="buttonid" class="btn color-starwars mb-2">Confirm</button>
-        </form>
-    </div>
-    <div class="collapse" id="collapsefilm">
-        <form class="form-inline">
-            <div class="form-group mb-2">
-                <input type="text" readonly class="form-control-plaintext color-starwars" value="Titre du Film">
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <input type="text" class="form-control" name="Titre du Film" value="" id="inputtitre">
-            </div>
-        </form>
-        <form class="form-inline">
-            <div class="form-group mb-2">
-                <input type="text" readonly class="form-control-plaintext color-starwars" value="Réalisateur">
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <input type="text" class="form-control" name="Réalisateur" value="" id="inputdirector">
-            </div>
-        </form>
-        <form class="form-inline">
-            <div class="form-group mb-2">
-                <input type="text" readonly class="form-control-plaintext color-starwars" value="Date de sortie">
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <input type="text" class="form-control" name="Date de sortie" value="" id="inputdate">
-            </div>
-        </form>
-        <form class="form-inline">
-            <div class="form-group mb-2">
-                <label for="Texte d'ouverture">Texte d'ouverture</label>
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <textarea id="inputouverture" name="Texte d'ouverture"></textarea>
-            </div>
-        </form>
-        <button type="button" id="buttonfilm" class="btn color-starwars mb-2">Confirm</button>
-    </div>
-<!-- #endregion -->
-    <br>
-    <h1 id="project-title"></h1>
-<!-- #region index-->
+
+<body data-spy="scroll" data-target="#list-film" data-offset="0" id="body">
+    <audio preload="auto" id="sound">
+        <source src="resources/Star_Wars_original_opening_crawl_1977.mp3" type="audio/mpeg" />
+    </audio>
+    <section id="debut">
+        <!-- #region NavBar-->
+        <nav id="navbar">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="btn nav-link" href="#" role="button" id="buttonindex">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn nav-link" data-toggle="collapse" href="#collapseid" role="button" id="closeid"
+                        aria-expanded="false" aria-controls="collapseid">Afficher par ID</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn nav-link" data-toggle="collapse" href="#collapsefilm" role="button" id="closefilm"
+                        aria-expanded="false" aria-controls="collapseid">Ajouter Film</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="documentation.html">Documentation</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- #endregion -->
+        <!-- #region Collapse zone-->
+        <div class="collapse" id="collapseid">
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" readonly class="form-control-plaintext color-starwars" value="ID du Film">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" value="" id="inputid">
+                </div>
+                <button type="button" id="buttonid" class="btn color-starwars mb-2">Confirm</button>
+            </form>
+        </div>
+        <div class="collapse" id="collapsefilm">
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" readonly class="form-control-plaintext color-starwars" value="Titre du Film">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" name="Titre du Film" value="" id="inputtitre">
+                </div>
+            </form>
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" readonly class="form-control-plaintext color-starwars" value="Réalisateur">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" name="Réalisateur" value="" id="inputdirector">
+                </div>
+            </form>
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" readonly class="form-control-plaintext color-starwars" value="Date de sortie">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" name="Date de sortie" value="" id="inputdate">
+                </div>
+            </form>
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="Texte d'ouverture">Texte d'ouverture</label>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <textarea id="inputouverture" name="Texte d'ouverture"></textarea>
+                </div>
+            </form>
+            <button type="button" id="buttonfilm" class="btn color-starwars mb-2">Confirm</button>
+        </div>
+        <!-- #endregion -->
+        <br>
+        <h1 id="project-title"></h1>
+    </section>
+    <!-- #region index-->
     <section id="index">
-        <div class="spy-scrool">
+        <div class="spy-scrool" id="scroolspy">
             <div id="list-film" class="list-group">
                 <!--Rempli automatiquement avec Javascript-->
             </div>
@@ -92,12 +98,12 @@
             <!--Rempli automatiquement avec Javascript-->
         </div>
     </section>
-<!-- #endregion -->
+    <!-- #endregion -->
     <section id="byid">
         <!--Rempli automatiquement avec Javascript-->
     </section>
-
-    <section id="opening-crawl">
+    <div class="fades"></div>
+    <section class="star-wars" id="section-s">
         <!--Rempli automatiquement avec Javascript-->
     </section>
 
@@ -116,4 +122,5 @@
     <script src='scripts/main.js'></script>
     <!-- #endregion -->
 </body>
+
 </html>

@@ -46,13 +46,14 @@ public class StarWars {
 				
 				Integer id = current.getInt("episode_id");
 				String name = current.getString("title");
-				String opening = current.getString("opening_crawl").replaceAll("\r\n", "<br>");
+				String opening = current.getString("opening_crawl").replaceAll("\r\n\r\n", "<br><br>"); //change "\r\n", "<br>"
+				String openingfinal = opening.replaceAll("\r\n \r\n", "<br><br>"); //Pour film 7
 				String director = current.getString("director");
 				
 				Date date = dateParse.parse(current.getString("release_date")); //Transforme en Date
 				String releaseDate = dateFormat.format(date);					//Transforme en String
 				
-				starWars.add(new Film(id, name, opening, director, releaseDate)); // ajoute un film à la liste
+				starWars.add(new Film(id, name, openingfinal, director, releaseDate)); // ajoute un film à la liste
 			}
 			
 			Collections.sort(starWars, new Comparator<Film>() { //tri la liste trouvé sur StackOverFlow
