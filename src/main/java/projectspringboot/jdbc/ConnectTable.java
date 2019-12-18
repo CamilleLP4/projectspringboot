@@ -14,34 +14,31 @@ public class ConnectTable {
 
 	private Connection connection;
 
-	private int successConnection = 0;
-	private String password = "root";
-	private String user = "root";
-	private String url = "jdbc:mysql://localhost:3306/filmsstarwars?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	// Les parametres ci-dessus sont a changer au besoin pour la connexion a la BDD
+	private int successConnection;
+	private String password;
+	private String user;
+	private String url;
+
 
 	/**
 	 * Initialise la connection à la création.
+	 * @param password mot de passe
+	 * @param user nom d'utilisateur
+	 * @param base nom de la base
+	 * @param port numero du port
 	 */
-	public ConnectTable() {
+	public ConnectTable(String password, String user, String base, String port) {
+		this.password = password;
+		this.user = user;
+		this.url = "jdbc:mysql://localhost:" + port + "/" + base + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		try {
 			this.initConnection();
 			this.successConnection = 1;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			this.successConnection = 0;
+			System.out.println("Echec connexion");
 		}
-	}
-
-	/**
-	 * @param password
-	 * @param user
-	 * @param url
-	 */
-	public ConnectTable(String password, String user, String url) {
-		super();
-		this.password = password;
-		this.user = user;
-		this.url = url;
 	}
 
 	/**

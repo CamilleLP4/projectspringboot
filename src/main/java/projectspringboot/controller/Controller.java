@@ -1,6 +1,5 @@
 package projectspringboot.controller;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import projectspringboot.api.StarWars;
 import projectspringboot.model.Film;
+import projectspringboot.jdbc.ConnectTable;
+import projectspringboot.jdbc.Requetes;
 
 /**
  * Controller executé au demarrage de SpringBoot
@@ -24,6 +25,7 @@ import projectspringboot.model.Film;
 public class Controller {
 	
 	List<Film> listFilm = new ArrayList<Film>();
+	ConnectTable connexion = null;
 	
 	public Controller() {
 		this.listFilm = StarWars.ApiStarWars();
@@ -74,19 +76,55 @@ public class Controller {
 	 * @param director realisateur du film
 	 * @param date date de sortie du film
 	 * @return retourne un status creation
-	 * @throws URISyntaxException
 	 */
 	@RequestMapping("/add")
-	public ResponseEntity<Film> addFilm(@RequestParam(value="name", defaultValue="")String name,
-										@RequestParam(value="opening", defaultValue="")String opening,
+	public ResponseEntity<Film> addFilm(@RequestParam(value="name", defaultValue="Non defini")String name,
+										@RequestParam(value="opening", defaultValue="Pas d'ouverture")String opening,
 										@RequestParam(value="director", defaultValue="Inconnu")String director,
-										@RequestParam(value="date", defaultValue="Pas encore disponible")String date) throws URISyntaxException {
+										@RequestParam(value="date", defaultValue="Pas encore disponible")String date) {
 		Film film = new Film(listFilm.size()+1, name, opening, director, date);
 		if (this.listFilm.add(film)) {
-			//return ResponseEntity.created(new URI("http://localhost:8080/byid/" + (listFilm.size()+1))).build();
-			//return ResponseEntity.of(Optional.of(insert));
+			if (this.connexion != null) {
+				if (Requetes.addFilm(this.connexion.getConnection(), film)) {
+					return new ResponseEntity<Film>(film, HttpStatus.CREATED);
+				}
+				return ResponseEntity.badRequest().build();
+			}
 			return new ResponseEntity<Film>(film, HttpStatus.CREATED);
 		}
 		return ResponseEntity.badRequest().build();
+	}
+	
+	/**
+	 * Endpoint activant la base de donnée
+	 * @param port port de la base de donnée
+	 * @param base nomde la base
+	 * @param user utilisateur pour acceder à la base
+	 * @param password mot de passe de la base
+	 * @return return le statut
+	 */
+	@RequestMapping("/db")
+	public ResponseEntity<String> activeDB(@RequestParam(value="port", defaultValue=""/*"3306"*/)String port,
+										@RequestParam(value="base", defaultValue=""/*"filmstarwars"*/)String base,
+										@RequestParam(value="user", defaultValue=""/*"root"*/)String user,
+										@RequestParam(value="password", defaultValue=""/*"root"*/)String password){
+		if (base.equals("api")) {
+			this.listFilm = StarWars.ApiStarWars();
+			this.connexion = null;
+			return new ResponseEntity<String>("Activation API",HttpStatus.OK);
+		}
+		if (port.equals("") || base.equals("") || user.equals("")) {
+			return new ResponseEntity<String>("Champ vide",HttpStatus.UNAUTHORIZED);
+		}
+		if (this.connexion == null) {
+			this.connexion = new ConnectTable(password, user, base, port);
+			if (this.connexion != null) {
+				this.listFilm = Requetes.getListFilm(this.connexion.getConnection());
+				return new ResponseEntity<String>("Activation Base de donnée",HttpStatus.OK);
+			}
+			return new ResponseEntity<String>("Echec connexion",HttpStatus.UNAUTHORIZED);
+		}
+		
+		return new ResponseEntity<String>("Echec connexion",HttpStatus.UNAUTHORIZED);
 	}
 }

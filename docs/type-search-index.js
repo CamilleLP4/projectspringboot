@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"projectspringboot.jdbc","l":"ConnectTable"},{"p":"projectspringboot.controller","l":"Controller"},{"p":"projectspringboot.model","l":"Film"},{"p":"projectspringboot","l":"ProjectspringbootApplication"},{"p":"projectspringboot.jdbc","l":"Requetes"},{"p":"projectspringboot.api","l":"StarWars"}]
