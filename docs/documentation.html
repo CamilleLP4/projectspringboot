@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Documentation API Star Wars</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
+</head>
+
+<body data-spy="scroll" data-target="#list-film" data-offset="0">
+    <!-- #region NavBar-->
+    <nav>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="documentation.html">Documentation</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- #endregion -->
+    <br>
+    <h1 class="docu">Documentation API</h1>
+    <section>
+        <div id="list-film" class="list-group spy-scrool">
+            <a class="list-group-item list-group-item-action" href="#list-item-1">Afficher le titre du Projet</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-2">Lister les films Star Wars</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-3">Afficher un film par ID</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-4">Ajouter un film à l'API</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-5">Activer la base de donnée</a>
+        </div>
+        <div class="spy-body docu-body">
+            <p>Cette API permet d'interagir avec les films Star Wars.</p>
+            <p>Seul le titre, le nom du Réalisateur, la date de sortie du film et le texte d'ouverture sont utilisable.</p>
+            <p>Cette API propose 4 Endpoint :
+                <ul class="docu-body">
+                    <li>
+                        <a href="#list-item-1" class="nolink">Afficher le titre du Projet</a>
+                    </li>
+                    <li>
+                        <a href="#list-item-2" class="nolink">Lister les films Star Wars</a>
+                    </li>
+                    <li>
+                        <a href="#list-item-3" class="nolink">Afficher un film en fournissant sont ID</a>
+                    </li>
+                    <li>
+                        <a href="#list-item-4" class="nolink">Ajouter un film à l'API</a>
+                    </li>
+                    <li>
+                        <a href="#list-item-5" class="nolink">Activer la base de donnée</a>
+                    </li>
+                </ul>
+            </p>
+            <p>L'API fonctionne par défaut en récupérant une base de films auprès de <a href="https://swapi.co/" class="nolink">SWAPI.</a></p>
+            <p>Il est possible après avoir installé la base de données (base.sql + data.sql) d'activer la base de donnée.</p>
+            <h4 id="list-item-1">Afficher le titre du Projet</h4>
+            <p>Retourne une chaîne de caractère correspondant au nom du projet.</p>
+            <p>Requêtes</p>
+            <p><code>http://localhost:8080/title</code></p>
+            <p>Réponse</p>
+            <p><code>Projet SpringBoot</code></p>
+            <h4 id="list-item-2">Lister les films Star Wars</h4>
+            <p>Retourne au format JSON la liste des films.</p>
+            <p>Requêtes</p>
+            <p><code>http://localhost:8080/list</code></p>
+            <p>Réponse</p>
+            <p><code>[
+    {
+        "id":1,
+        "name":"La Menace Fantôme",
+        "opening":"La République Galactique est en pleine ébullition. La taxation des routes commerciales reliant les systèmes stellaires éloignés provoque la discorde. Pour régler la question, la cupide Fédération du Commerce et ses redoutables vaisseaux de guerre imposent un blocus à la petite planète Naboo. Face à ce dangereux engrenage, alors que le Congrès de la République s’enlise dans des débats sans fin, le Chancelier Suprême charge en secret deux Chevaliers Jedi, gardiens de la paix et de la justice dans la galaxie, de résoudre le conflit....",
+        "director":"George Lucas",
+        "date":"13 octobre 1999"
+    },
+    {
+        "id":2,
+        "name":"L’Attaque des Clones",
+        "opening":"L’agitation règne au Sénat Galactique. Des milliers de systèmes solaires ont annoncé leur intention de quitter la République. Confrontés à ce mouvement séparatiste mené par le mystérieux Comte Dooku, les chevaliers Jedi, en nombre limité, ont du mal à maintenir la paix et l’ordre dans la galaxie. La sénatrice Amidala, ancienne reine de Naboo, revient au Sénat Galactique pour participer à un vote crucial sur la création d’une Armée de la République pour aider les Jedi débordés....",
+        "director":"George Lucas",
+        "date":"17 mai 2002"
+    },
+    {
+        "id":3,
+        "name":"La Revanche des Sith",
+        "opening":"C’est la guerre ! La République croule sous les attaques de l’impitoyable Sith, le Comte Dooku. Il y a des héros dans les deux camps. Le Mal est partout. Avec une audace stupéfiante, le Général Grievous, diabolique chef droïde, est entré dans la capitale pour enlever le Chancelier Suprême Palpatine, chef suprême du Sénat Galactique. Alors que l’Armée Droïde Séparatiste tente de quitter la capitale assiégée avec son précieux otage, deux Chevaliers Jedi mènent une mission désespérée pour secourir le chancelier captif....",
+        "director":"George Lucas",
+        "date":"19 mai 2005"
+    },
+    {
+        "id":4,
+        "name":"Un Nouvel Espoir"
+        ,"opening":"C’est une époque de guerre civile. À bord de vaisseaux spatiaux opérant à partir d’une base cachée, les rebelles ont emporté leur première victoire sur le maléfique Empire Galactique. Au cours de la bataille, des espions rebelles ont réussi à dérober les plans secrets de l’arme absolue de l’Empire : l’Étoile de la Mort, une station spatiale blindée dotée d’un équipement assez puissant pour annihiler une planète tout entière. Poursuivie par des sbires sinistres de l’Empire, la princesse Leia file vers sa base dans son vaisseau cosmique, porteuse des plans volés à l’ennemi qui pourront sauver son peuple et restaurer la liberté dans la galaxie....",
+        "director":"George Lucas",
+        "date":"19 octobre 1977"
+    },
+    {
+        "id":5,
+        "name":"L’Empire contre-attaque",
+        "opening":"Le temps du péril a commencé pour la rébellion. Malgré la destruction de l’Étoile de la Mort, l’armée Impériale a chassé les rebelles de leur base cachée et les poursuit à travers la galaxie. Après avoir échappé à la redoutable escadrille cosmique de l’Empire, un groupe de résistants mené par Luke Skywalker a établi une nouvelle base secrète sur Hoth, la lointaine planète des glaces. Dark Vador, le maléfique, hanté par l’idée de retrouver le jeune Luke, lance des milliers de sondes téléguidées aux confins de l’espace....",
+        "director":"George Lucas",
+        "date":"20 août 1980"
+    }
+]
+            </code></p>
+            <h4 id="list-item-3">Afficher un film en fournissant sont ID</h4>
+            <p>Retourne au format JSON le films demandé si il existe, sinon retourne erreur 404 Not Found.</p>
+            <p>Requêtes</p>
+            <p><code>http://localhost:8080/byid/6</code></p>
+            <p>Réponse</p>
+            <p><code>{
+    "id":6,
+    "name":"Le Retour du Jedi",
+    "opening":"Luke Skywalker est retourné parmi les siens sur la planète Tatooine pour tenter d’arracher son ami Han Solo aux griffes de l’ignoble Jabba Desilijic Tiure. Luke ne peut pas savoir que l’Empire Galactique a commencé à construire en secret une nouvelle station spatiale blindée bien plus puissante et terrifiante que l’Étoile de la Mort. Quand cette arme absolue sera achevée, ce sera la fin du petit groupe de résistants qui luttent pour ramener la liberté dans la galaxie....",
+    "director":"George Lucas",
+    "date":"19 octobre 1983"
+}
+            </code></p>
+            <h4 id="list-item-4">Ajouter un film à l'API</h4>
+            <p>Retourne au format JSON le film fraichement crée.</p>
+            <p>Requêtes</p>
+            <p><code>http://localhost:8080/add?name=Nouveau Film&opening=Texte d'ouverture de ce nouveau Film&director=Le Réalisateur&date=Demain</code></p>
+            <p>Réponse</p>
+            <p><code>{
+    "id":10,
+    "name":"Nouveau Film",
+    "opening":"Texte d'ouverture de ce nouveau Film",
+    "director":"Le Réalisateur",
+    "date":"Demain"
+}
+            </code></p>
+            <h4 id="list-item-5">Activer la base de donnée</h4>
+            <p>Active la connexion à la Base de donnée avec les paramètres fournis. Ou la désactive.</p>
+            <p>Requêtes</p>
+            <p><code>http://localhost:8080/db?port=3306&base=filmstarwars&user=root&password=root</code></p>
+            <p><code>http://localhost:8080/db?port=&base=api&user=&password=</code></p>
+            <p>Réponse</p>
+            <p><code>Activation Base de donnée</code></p>
+            <p><code>Activation API</code></p>
+        </div>
+    </section>
+
+    <footer class="foot">
+        <small>&copy; Copyright Camille Décembre 2019 Projet Simplon SpringBoot</small>
+    </footer>
+    <!-- #region Scripts-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- #endregion -->
+</body>
+
+</html>
